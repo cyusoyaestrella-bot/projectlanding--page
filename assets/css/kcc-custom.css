@@ -1073,3 +1073,160 @@ body {
 .cta-kcc > .container {
   background: linear-gradient(115deg, #a91e37 0%, #751629 72%, #5d1c35 100%);
 }
+
+.navmenu a:after {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .24s ease;
+}
+
+.navmenu a:hover:after,
+.navmenu a.active:after {
+  transform: scaleX(1);
+}
+
+.hero-kcc:after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: radial-gradient(ellipse at 82% 28%, rgb(201 168 104 / 20%), transparent 36%);
+  opacity: .8;
+  pointer-events: none;
+  animation: hero-glow 8s ease-in-out infinite alternate;
+}
+
+.about-photo {
+  transition: transform .6s cubic-bezier(.2, .7, .2, 1), filter .4s ease;
+}
+
+.about-image-wrap:hover .about-photo {
+  transform: scale(1.025);
+  filter: saturate(1);
+}
+
+.program-card .program-icon,
+.news-card .news-icon,
+.contact-panel i {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.program-card:hover .program-icon,
+.news-card:hover .news-icon {
+  transform: translateY(-3px) rotate(-3deg);
+  box-shadow: 0 10px 20px rgb(23 33 58 / 16%);
+}
+
+.campus-tile img {
+  transition: transform .7s cubic-bezier(.2, .7, .2, 1), opacity .4s ease;
+}
+
+.campus-tile:hover img {
+  transform: scale(1.07);
+}
+
+.contact-panel > div:hover i {
+  transform: scale(1.08);
+  box-shadow: 0 6px 14px rgb(23 33 58 / 14%);
+}
+
+.btn-hero,
+.btn-getstarted {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hero:after,
+.btn-getstarted:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgb(255 255 255 / 20%) 50%, transparent 75%);
+  transform: translateX(-120%);
+  transition: transform .55s ease;
+  pointer-events: none;
+}
+
+.btn-hero:hover:after,
+.btn-getstarted:hover:after {
+  transform: translateX(120%);
+}
+
+.scroll-cue {
+  animation: scroll-cue-bob 2.2s ease-in-out infinite;
+}
+
+@keyframes hero-glow {
+  from {
+    opacity: .45;
+  }
+
+  to {
+    opacity: .9;
+  }
+}
+
+@keyframes scroll-cue-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-kcc:after,
+  .scroll-cue {
+    animation: none;
+  }
+}
+
+.hero-watermark {
+  position: absolute;
+  z-index: 1;
+  top: 8%;
+  left: -0.06em;
+  color: rgb(232 201 135 / 12%);
+  font: 900 clamp(96px, 17vw, 230px)/.82 Raleway, sans-serif;
+  letter-spacing: -.075em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  animation: watermark-breathe 9s ease-in-out infinite alternate;
+}
+
+.hero-kcc h1,
+.hero-kcc h1 em {
+  color: #e8c987;
+}
+
+.hero-watermark + .container {
+  z-index: 2;
+}
+
+@keyframes watermark-breathe {
+  from {
+    opacity: .65;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(1.2%);
+  }
+}
+
+@media (max-width: 575px) {
+  .hero-watermark {
+    top: 12%;
+    font-size: 23vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-watermark {
+    animation: none;
+  }
+}
